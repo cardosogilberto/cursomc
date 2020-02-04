@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -Dspring.profiles.active=prod $JAVA_OPTS -jar target/cursomc.1.0.0-SNAPSHOT.jar
+web: java -Dserver.port=$PORT -Dspring.profiles.active=prod $JAVA_OPTS -jar /Users/administrador/Documents/workspace-sts-3.9.10.RELEASE/cursomc/target/cursomc-1.0.0-SNAPSHOT.jar

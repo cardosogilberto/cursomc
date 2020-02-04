@@ -12,8 +12,6 @@ import javax.persistence.ManyToMany;
 
 @Entity
 public class Categoria implements Serializable {
-	
-
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -23,9 +21,6 @@ public class Categoria implements Serializable {
 	
 	@ManyToMany(mappedBy = "categorias")
 	private List<Produto> produtos = new ArrayList<>();
-	
-	
-	
 	
 	public List<Produto> getProdutos() {
 		return produtos;
