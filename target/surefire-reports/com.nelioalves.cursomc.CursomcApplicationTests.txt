@@ -1,4 +1,20 @@
 -------------------------------------------------------------------------------
 Test set: com.nelioalves.cursomc.CursomcApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.99 s - in com.nelioalves.cursomc.CursomcApplicationTests
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 6.876 s <<< FAILURE! - in com.nelioalves.cursomc.CursomcApplicationTests
+contextLoads  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.BeanCreationException: 
+Error creating bean with name 'instantiateDatabase' defined in class path resource [com/nelioalves/cursomc/config/TestConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [boolean]: Factory method 'instantiateDatabase' threw exception; nested exception is org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint ["PUBLIC.UK_CMXO70M08N43599L3H0H07CC6_INDEX_5 ON PUBLIC.CLIENTE(EMAIL) VALUES 4"; SQL statement:
+insert into cliente (id, cpf_ou_cnpj, email, nome, senha, tipo) values (null, ?, ?, ?, ?, ?) [23505-200]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+Caused by: org.springframework.beans.BeanInstantiationException: 
+Failed to instantiate [boolean]: Factory method 'instantiateDatabase' threw exception; nested exception is org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint ["PUBLIC.UK_CMXO70M08N43599L3H0H07CC6_INDEX_5 ON PUBLIC.CLIENTE(EMAIL) VALUES 4"; SQL statement:
+insert into cliente (id, cpf_ou_cnpj, email, nome, senha, tipo) values (null, ?, ?, ?, ?, ?) [23505-200]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+Caused by: org.springframework.dao.DataIntegrityViolationException: 
+could not execute statement; SQL [n/a]; constraint ["PUBLIC.UK_CMXO70M08N43599L3H0H07CC6_INDEX_5 ON PUBLIC.CLIENTE(EMAIL) VALUES 4"; SQL statement:
+insert into cliente (id, cpf_ou_cnpj, email, nome, senha, tipo) values (null, ?, ?, ?, ?, ?) [23505-200]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+Caused by: org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: 
+Unique index or primary key violation: "PUBLIC.UK_CMXO70M08N43599L3H0H07CC6_INDEX_5 ON PUBLIC.CLIENTE(EMAIL) VALUES 4"; SQL statement:
+insert into cliente (id, cpf_ou_cnpj, email, nome, senha, tipo) values (null, ?, ?, ?, ?, ?) [23505-200]
+
