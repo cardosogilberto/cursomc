@@ -17,9 +17,12 @@ import com.nelioalves.cursomc.DTO.ClienteNewDTO;
 import com.nelioalves.cursomc.model.Cidade;
 import com.nelioalves.cursomc.model.Cliente;
 import com.nelioalves.cursomc.model.Endereco;
+import com.nelioalves.cursomc.model.enums.Perfil;
 import com.nelioalves.cursomc.model.enums.TipoCliente;
 import com.nelioalves.cursomc.repositories.ClienteRepository;
 import com.nelioalves.cursomc.repositories.EnderecoRepository;
+import com.nelioalves.cursomc.security.UserSS;
+import com.nelioalves.cursomc.services.exceptions.AuthorizationException;
 import com.nelioalves.cursomc.services.exceptions.DataIntegrityException;
 import com.nelioalves.cursomc.services.exceptions.ObjectNotFoundException;
 
@@ -37,6 +40,12 @@ public class ClienteService {
 
 	
 	public Cliente find(Integer id) throws ObjectNotFoundException {
+		
+		UserSS user = UserService.authenticated();
+		if (user==null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())) {
+			throw new AuthorizationException("Acesso negado");
+		}
+
 		Optional<Cliente> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName()));
